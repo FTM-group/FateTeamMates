@@ -1,2 +1,2 @@
-# FateTeamMates
+# FindTeamMates
 IMIE project
