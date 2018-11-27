@@ -1,0 +1,13 @@
+{
+    "Nickname :": "Nickname :",
+    "Password :": "Password :",
+    "Login": "Login",
+    "Forgot your password ?": "Forgot your password ?",
+    "Register": "Register",
+
+    "Nickname already taken": "Nickname already taken",
+    "Repeat :": "Repeat :",
+    "Email :": "Email :",
+    "Email already used": "Email already used",
+    "Provide a real email, it could be useful if you lose your account.": "Provide a real email, it could be useful if you lose your account."
+}

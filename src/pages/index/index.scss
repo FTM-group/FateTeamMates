@@ -1,0 +1,14 @@
+page-index{
+    .selectGame ion-col{
+        margin-top: -25%;
+    }
+    .selectGame ion-col:first-child{
+        background-color: blue;
+    }
+    .selectGame ion-col:nth-child(2){
+        background-color: green;
+    }
+    .selectGame ion-col:nth-child(3){
+        background-color: red;
+    }
+}

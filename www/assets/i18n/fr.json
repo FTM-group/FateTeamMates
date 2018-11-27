@@ -1,0 +1,13 @@
+{
+    "Nickname :": "Pseudo :",
+    "Password :": "Mot de passe :",
+    "Login": "Se connecter",
+    "Forgot your password ?": "Mot de passe oublié ?",
+    "Register": "Inscription",
+
+    "Nickname already taken": "Pseudo déjà prit",
+    "Repeat :": "Répetez :",
+    "Email :": "Courriel :",
+    "Email already used": "Courriel déjà utilisé",
+    "Provide a real email, it could be useful if you lose your account.": "Entrez un vrai courriel, il pourrait être utile si vous perdez votre compte."
+}

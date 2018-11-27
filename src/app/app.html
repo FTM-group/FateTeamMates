@@ -1,0 +1,31 @@
+<ion-header>
+   <ion-navbar hideBackButton='true' align-title="center">
+        <ion-buttons right>
+            <button ion-button menuToggle text-uppercase color="dark" #options>  
+                <ion-icon name="settings"></ion-icon>
+            </button> 
+        </ion-buttons>
+        <ion-title>
+            FindTeamMate
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-menu [content]="options" type="overlay">
+    <ion-content>
+        <ion-list> <!-- fermer menu à faire après sélection !!!!!! -->
+            <button ion-item text-center style="background-color: lightgrey">
+                {{ "Language" | translate }}
+            </button>
+            <button ion-item class="menuLanguages" (click)="switchLanguage('en')">
+                English
+            </button>
+            <button ion-item class="menuLanguages" (click)="switchLanguage('fr')">
+                Français
+            </button>
+        </ion-list>
+        <ion-list *ngIf="connected">
+            <button ion-item text-center style="background-color: lightgrey" (click)="logout()">{{ "Logout" | translate }}</button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage"></ion-nav>

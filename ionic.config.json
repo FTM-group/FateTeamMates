@@ -1,0 +1,7 @@
+{
+  "name": "FTM",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

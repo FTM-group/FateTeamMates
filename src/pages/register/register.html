@@ -1,0 +1,65 @@
+<ion-content padding>
+  <ion-grid style="height: 100%;">
+    <ion-row align-items-center style="height: 100%;">
+      <ion-col col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-xl-4 offset-xl-4>
+          <p class="c-red" *ngIf="errRegister">{{ "An error occurred during your registration. Please try again." | translate }}</p>
+
+          <form (ngSubmit)="registerForm()">
+              <ion-item>
+                <ion-label>{{ "Nickname :" | translate }}</ion-label>
+                <ion-input type="text" [(ngModel)]="register.nickname" name="nickname" (change)="checkNickname()" *ngIf="nicknameAvailability == null"></ion-input>
+                <ion-input type="text" [(ngModel)]="register.nickname" name="nickname" (change)="checkNickname()" [ngClass]="(nicknameAvailability) ? 'c-green' : ''" *ngIf="nicknameAvailability == true"></ion-input>
+                <ion-input type="text" [(ngModel)]="register.nickname" name="nickname" (change)="checkNickname()" [ngClass]="(nicknameAvailability == false) ? 'c-red' : ''" *ngIf="nicknameAvailability == false"></ion-input>
+                <ion-icon name="checkmark" *ngIf="nicknameAvailability" item-right class="c-green"></ion-icon>
+                <ion-icon name="close" *ngIf="nicknameAvailability == false || errNickname != null" item-right class="c-red"></ion-icon>
+              </ion-item>
+              <p class="error c-red" *ngIf="errNickname == 1">{{ "Nickname required." | translate }}</p>
+              <p class="error c-red" *ngIf="errNickname == 2">{{ "Your nickname has at least 3 characters." | translate }}</p>
+              <p class="error c-red" *ngIf="nicknameAvailability == false">{{ "Nickname already taken." | translate }}</p>
+              <ion-item>
+                <ion-label>{{ "Password :" | translate }}</ion-label>
+                <ion-input type="password" [(ngModel)]="register.password" name="password" (change)="checkPasswords()" *ngIf="passwordsMatch == null"></ion-input>
+                <ion-input type="password" [(ngModel)]="register.password" name="password" (change)="checkPasswords()" [ngClass]="(passwordsMatch) ? 'c-green' : ''" *ngIf="passwordsMatch == true"></ion-input>
+                <ion-input type="password" [(ngModel)]="register.password" name="password" (change)="checkPasswords()" [ngClass]="(passwordsMatch == false) ? 'c-red' : ''" *ngIf="passwordsMatch == false"></ion-input>
+                <ion-icon name="checkmark" *ngIf="passwordsMatch" item-right class="c-green"></ion-icon>
+                <ion-icon name="close" *ngIf="passwordsMatch == false || errPassword != null" item-right class="c-red"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-label>{{ "Repeat :" | translate }}</ion-label>
+                <ion-input type="password" [(ngModel)]="register.password2" name="password2" (change)="checkPasswords()" *ngIf="passwordsMatch == null"></ion-input>
+                <ion-input type="password" [(ngModel)]="register.password2" name="password2" (change)="checkPasswords()" [ngClass]="(passwordsMatch) ? 'c-green' : ''" *ngIf="passwordsMatch == true"></ion-input>
+                <ion-input type="password" [(ngModel)]="register.password2" name="password2" (change)="checkPasswords()" [ngClass]="(passwordsMatch == false || errPassword != null) ? 'c-red' : ''" *ngIf="passwordsMatch == false"></ion-input>
+                <ion-icon name="checkmark" *ngIf="passwordsMatch" item-right class="c-green"></ion-icon>
+                <ion-icon name="close" *ngIf="passwordsMatch == false || errPassword != null" item-right class="c-red"></ion-icon>
+              </ion-item>
+              <p class="error c-red" *ngIf="errPassword == 1">{{ "Passwords required." | translate }}</p>
+              <p class="error c-red" *ngIf="errPassword == 2">{{ "Passwords don't match." | translate }}</p>
+              <p class="error c-red" *ngIf="errPassword == 3">{{ "At least 3 characters required." | translate }}</p>
+              <p class="error c-red" *ngIf="errPassword == 4">{{ "One capital letter, number required and no specials caracters allowed." | translate }}</p>
+              <ion-item>
+                <ion-label>{{ "Email :" | translate }}</ion-label>
+                <ion-input type="email" [(ngModel)]="register.email" name="email" (change)="checkEmail()" [ngClass]="(errEmail != null || emailAvailability == false) ? 'c-red' : (emailAvailability ? 'c-green' : '')"></ion-input>
+                <ion-icon name="checkmark" *ngIf="emailAvailability" item-right class="c-green"></ion-icon>
+                <ion-icon name="close" *ngIf="emailAvailability == false || errEmail != null" item-right class="c-red"></ion-icon>
+              </ion-item>
+              <p class="error c-red" *ngIf="errEmail == 1">{{ "Email required." | translate }}</p>
+              <p class="error c-red" *ngIf="errEmail == 2">{{ "Invalid email type." | translate }}</p>
+              <p class="error c-red" *ngIf="emailAvailability == false">{{ "Email already used." | translate }}</p>
+              <button ion-button type="submit" block>{{ "Register" | translate }}</button>
+            </form>
+        
+            <div class="text-center">
+              <a [navPush]="loginPage">{{ "Login" | translate }}</a>
+            </div>
+        
+            <p>{{ "Provide a real email, it could be useful if you lose your account." | translate }}</p>
+
+            <ion-spinner name="bubbles" *ngIf="registerSpinner"></ion-spinner>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+
+  
+</ion-content>
