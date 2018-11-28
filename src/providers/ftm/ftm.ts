@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class FtmProvider {
   
-  apiUrl = "http://127.0.0.1/FindTeamMate/";
+  apiUrl = "http://findteammates/";
   public errServer="ok";
 
   constructor(public http: HttpClient, public translate: TranslateService) {
@@ -39,7 +39,7 @@ export class FtmProvider {
     return data;
   }
 
-  newUser(login:string, password:string, email:string){console.log('newuser');
+  newUser(login:string, password:string, email:string){
     let data = new Promise(resolve => {
       this.http.post(this.apiUrl+"new_user.php", {'login':login, 'password':password, 'email':email}, {
         headers: { 'Content-Type': 'application/json' }
