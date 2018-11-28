@@ -1,13 +1,28 @@
 {
-    "Nickname :": "Nickname :",
-    "Password :": "Password :",
-    "Login": "Login",
-    "Forgot your password ?": "Forgot your password ?",
-    "Register": "Register",
+  "Nickname :": "Nickname :",
+  "Password :": "Password :",
+  "Login": "Login",
+  "Forgot your password ?": "Forgot your password ?",
+  "Register": "Register",
+  "Language": "Language",
+  "Logout": "Logout",
+  "Server down, try again later": "Server down, try again later",
 
-    "Nickname already taken": "Nickname already taken",
-    "Repeat :": "Repeat :",
-    "Email :": "Email :",
-    "Email already used": "Email already used",
-    "Provide a real email, it could be useful if you lose your account.": "Provide a real email, it could be useful if you lose your account."
+  "An error occurred during your registration. Please try again.": "An error occurred during your registration. Please try again.",
+  "Nickname required.": "Nickname required.",
+  "Your nickname has at least 3 characters.": "Your nickname has at least 3 characters.",
+  "Your password has at least 3 characters.": "Your password has at least 3 characters.",
+  "Nickname already taken": "Nickname already taken",
+  "Nickname or password invalid": "Nickname or password invalid",
+  "Repeat :": "Repeat :",
+  "Email :": "Email :",
+  "Invalid email type.": "Invalid email type",
+  "Email already used.": "Email already used",
+  "Email required.": "Email required.",
+  "Provide a real email, it could be useful if you lose your account.": "Provide a real email, it could be useful if you lose your account.",
+
+  "Passwords required.": "Passwords required.",
+  "Passwords don't match.": "Passwords don't match.",
+  "At least 3 characters required.": "At least 3 characters required.",
+  "One capital letter, number required and no specials caracters allowed.": "One capital letter, number required and no specials caracters allowed."
 }

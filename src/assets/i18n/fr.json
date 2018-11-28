@@ -1,13 +1,28 @@
 {
-    "Nickname :": "Pseudo :",
-    "Password :": "Mot de passe :",
-    "Login": "Se connecter",
-    "Forgot your password ?": "Mot de passe oublié ?",
-    "Register": "Inscription",
+  "Nickname :": "Pseudo :",
+  "Password :": "Mot de passe :",
+  "Login": "Se connecter",
+  "Forgot your password ?": "Mot de passe oublié ?",
+  "Register": "Inscription",
+  "Language": "Langage",
+  "Logout": "Déconnexion",
+  "Server down, try again later": "Serveur arrêté, réessayez plus tard",
 
-    "Nickname already taken": "Pseudo déjà prit",
-    "Repeat :": "Répetez :",
-    "Email :": "Courriel :",
-    "Email already used": "Courriel déjà utilisé",
-    "Provide a real email, it could be useful if you lose your account.": "Entrez un vrai courriel, il pourrait être utile si vous perdez votre compte."
+  "An error occurred during your registration. Please try again.": "Une erreur est survenue lors de votre inscription. Veuillez réessayer.",
+  "Nickname required.": "Pseudo requis.",
+  "Your nickname has at least 3 characters.": "Votre pseudo doit contenir au moins 3 caractères.",
+  "Your password has at least 3 characters.": "Votre mot de passe doit contenir au moins 3 caractères.",
+  "Nickname already taken": "Pseudo déjà prit",
+  "Nickname or password invalid": "Pseudo ou mot de passe invalide",
+  "Repeat :": "Répetez :",
+  "Email :": "Courriel :",
+  "Invalid email type.": "Type d'email invalide",
+  "Email already used.": "Courriel déjà utilisé",
+  "Email required.": "Email requis.",
+  "Provide a real email, it could be useful if you lose your account.": "Entrez un vrai courriel, il pourrait être utile si vous perdez votre compte.",
+
+  "Passwords required.": "Mot de passe requis.",
+  "Passwords don't match.": "Les mots de passe ne correspondent pas.",
+  "At least 3 characters required.": "Au moins 3 caractères requis.",
+  "One capital letter, number required and no specials caracters allowed.": "Une lettre majuscule, un numéro requis et aucun caractère spécial autorisé."
 }
