@@ -15,9 +15,9 @@ export class FtmProvider {
   }
 
 
-  checkNicknameAvailability(nickname:string){
+  checkLoginAvailability(login:string){
     let data = new Promise(resolve => {
-      this.http.get(this.apiUrl+"new_user.php?nickname="+nickname).subscribe(data => {
+      this.http.get(this.apiUrl+"new_user.php?login="+login).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -39,9 +39,9 @@ export class FtmProvider {
     return data;
   }
 
-  newUser(nickname:string, password:string, email:string){console.log('newuser');
+  newUser(login:string, password:string, email:string){console.log('newuser');
     let data = new Promise(resolve => {
-      this.http.post(this.apiUrl+"new_user.php", {'nickname':nickname, 'password':password, 'email':email}, {
+      this.http.post(this.apiUrl+"new_user.php", {'login':login, 'password':password, 'email':email}, {
         headers: { 'Content-Type': 'application/json' }
       }).subscribe(data => {
         resolve(data);
@@ -54,10 +54,10 @@ export class FtmProvider {
   }
 
 
-  getLog(nickname:string, password:string){
+  getLog(login:string, password:string){
 
     let data = new Promise(resolve => {
-      this.http.post(this.apiUrl+"login.php", {'nickname':nickname, 'password':password}, {
+      this.http.post(this.apiUrl+"login.php", {'login':login, 'password':password}, {
         headers: { 'Content-Type': 'application/json' }
       }).subscribe(data => {
         resolve(data);

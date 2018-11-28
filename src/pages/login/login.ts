@@ -22,17 +22,17 @@ export class LoginPage {
 
   public connected;
 
-  public login = {
-    nickname: '',
+  public log = {
+    login: '',
     password: ''
   };
 
 
-  public nickname: string;
+  public login: string;
   public password: string;
   public logData;
 
-  public errNickname;
+  public errLogin;
   public errPassword;
   public errInvalid;
 
@@ -47,16 +47,16 @@ export class LoginPage {
     this.registerPage = RegisterPage;
     this.passwordPage = PasswordPage; 
     
-    if(navParams.get("nickname") != undefined && navParams.get("password") != undefined){
-        let nickname = navParams.get("nickname");
+    if(navParams.get("login") != undefined && navParams.get("password") != undefined){
+        let login = navParams.get("login");
         let password = navParams.get("password");
-        this.loginAction(nickname, password);
+        this.loginAction(login, password);
     }
    
   }
 
   public loginForm(){
-    this.errNickname ="";
+    this.errLogin ="";
     this.errPassword ="";
     this.errInvalid ="";
 
@@ -64,22 +64,22 @@ export class LoginPage {
     this.checkConnectionServer = "";
 
 
-    if(!this.login.nickname || this.login.nickname.length < 3){
-      this.errNickname = true;
+    if(!this.log.login || this.log.login.length < 3){
+      this.errLogin = true;
     }
-    if(!this.login.password || this.login.password.length < 3){
+    if(!this.log.password || this.log.password.length < 3){
       this.errPassword = true;
     }
 
-    if(this.login.nickname && this.login.password && this.login.nickname.length > 2 && this.login.password.length > 2){
-      this.loginAction(this.login.nickname, this.login.password);
+    if(this.log.login && this.log.password && this.log.login.length > 2 && this.log.password.length > 2){
+      this.loginAction(this.log.login, this.log.password);
     }
   }
 
-  public loginAction(nickname: string, password: string){
+  public loginAction(login: string, password: string){
     this.spinner = true;
       this.checkConnectionServer = "start";
-      this.ftm.getLog(nickname, password).then((data) => {
+      this.ftm.getLog(login, password).then((data) => {
         this.logData = data;
         this.checkConnectionServer = "end";
         if(this.logData.status == "error"){
@@ -87,7 +87,7 @@ export class LoginPage {
         }
         else if(this.logData.status == "success"){
           if(this.storage.ready()){
-            let user = {'nickname':this.logData.user.nickname, 'email':this.logData.user.email};
+            let user = {'login':this.logData.user.login, 'email':this.logData.user.email};
             this.storage.set('user', user);
             this.events.publish('connected', true);
           }

@@ -14,15 +14,15 @@ import { TranslateService } from '@ngx-translate/core';
 export class RegisterPage {
   public loginPage;
   public register = {
-    nickname: '',
+    login: '',
     password: '',
     password2: '',
     email: ''
   };
 
   public available;
-  public nicknameAvailability = null;
-  public errNickname = null;
+  public loginAvailability = null;
+  public errLogin = null;
   public passwordsMatch = null;
   public errPassword = null;
   public emailAvailability = null;
@@ -37,8 +37,8 @@ export class RegisterPage {
   }
 
   public registerForm() {
-    if(this.register.nickname == ""){
-      this.errNickname = 1;
+    if(this.register.login == ""){
+      this.errLogin = 1;
     }
     if(this.register.password == ""){
       this.errPassword = 1;
@@ -47,13 +47,13 @@ export class RegisterPage {
       this.errEmail = 1;
     }
 
-    if(this.nicknameAvailability && this.passwordsMatch && this.emailAvailability){
+    if(this.loginAvailability && this.passwordsMatch && this.emailAvailability){
       this.registerSpinner = true;
       this.errRegister = false;
-      this.ftmProvider.newUser(this.register.nickname, this.register.password, this.register.email).then(data=>{
+      this.ftmProvider.newUser(this.register.login, this.register.password, this.register.email).then(data=>{
         if(data['status'] == "success"){
           this.navCtrl.push(LoginPage, {
-            nickname : this.register.nickname,
+            login : this.register.login,
             password : this.register.password
           });
         }
@@ -68,22 +68,22 @@ export class RegisterPage {
     
   }
 
-  public checkNickname(){
-    this.errNickname = null;
-    if (this.register.nickname == ""){
-      this.nicknameAvailability = null;
+  public checkLogin(){
+    this.errLogin = null;
+    if (this.register.login == ""){
+      this.loginAvailability = null;
     }
-    else if(this.register.nickname.length < 3){
-      this.errNickname = 2;
+    else if(this.register.login.length < 3){
+      this.errLogin = 2;
     }
     else{
-      this.ftmProvider.checkNicknameAvailability(this.register.nickname).then(data => {
+      this.ftmProvider.checkLoginAvailability(this.register.login).then(data => {
         this.available = data;
         if(this.available.status == "available"){
-          this.nicknameAvailability = true;
+          this.loginAvailability = true;
         }
         else if(this.available.status == "exist"){
-          this.nicknameAvailability = false;
+          this.loginAvailability = false;
         }
       });
     }
