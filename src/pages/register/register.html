@@ -32,7 +32,7 @@
                 <ion-icon name="checkmark" *ngIf="passwordsMatch" item-right class="c-green"></ion-icon>
                 <ion-icon name="close" *ngIf="passwordsMatch == false || errPassword != null" item-right class="c-red"></ion-icon>
               </ion-item>
-              <p class="error c-red" *ngIf="errPassword == 1">{{ "Passwords required." | translate }}</p>
+              <p class="error c-red" *ngIf="errPassword == 1">{{ "Password required." | translate }}</p>
               <p class="error c-red" *ngIf="errPassword == 2">{{ "Passwords don't match." | translate }}</p>
               <p class="error c-red" *ngIf="errPassword == 3">{{ "At least 3 characters required." | translate }}</p>
               <p class="error c-red" *ngIf="errPassword == 4">{{ "One capital letter, number required and no specials caracters allowed." | translate }}</p>

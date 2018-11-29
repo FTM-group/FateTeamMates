@@ -4,7 +4,7 @@
               <ion-col col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-xl-4 offset-xl-4>
                   <form (ngSubmit)="loginForm()">
                       <ion-item>
-                          <ion-label>{{ "Nickname :" | translate }}</ion-label>
+                          <ion-label>{{ "Login :" | translate }}</ion-label>
                           <ion-input type="text" [(ngModel)]="log.login" name="login"></ion-input>
                         </ion-item>
                         <p class="error c-red" *ngIf="errNickname">{{ "Your login has at least 3 characters." | translate }}</p>
@@ -13,7 +13,7 @@
                           <ion-label>{{ "Password :" | translate}}</ion-label>
                           <ion-input type="password" [(ngModel)]="log.password" name="password"></ion-input>
                         </ion-item>
-                        <p class="error c-red" *ngIf="errPassword">{{ "Your password has at least 3 characters" | translate }}</p>
+                        <p class="error c-red" *ngIf="errPassword">{{ "Your password has at least 3 characters." | translate }}</p>
                         <p class="error c-red" *ngIf="errInvalid">{{ "Login or password invalid" | translate }}</p>
                         <p class="error c-red" *ngIf="errServer">{{ "Server down, try again later" | translate }}</p>
                         

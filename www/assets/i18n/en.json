@@ -1,5 +1,5 @@
 {
-  "Nickname :": "Nickname :",
+  "Login :": "Login :",
   "Password :": "Password :",
   "Login": "Login",
   "Forgot your password ?": "Forgot your password ?",
@@ -9,11 +9,11 @@
   "Server down, try again later": "Server down, try again later",
 
   "An error occurred during your registration. Please try again.": "An error occurred during your registration. Please try again.",
-  "Nickname required.": "Nickname required.",
-  "Your nickname has at least 3 characters.": "Your nickname has at least 3 characters.",
+  "Login required.": "Login required.",
+  "Your Login has at least 3 characters.": "Your Login has at least 3 characters.",
   "Your password has at least 3 characters.": "Your password has at least 3 characters.",
-  "Nickname already taken": "Nickname already taken",
-  "Nickname or password invalid": "Nickname or password invalid",
+  "Login already taken": "Login already taken",
+  "Login or password invalid": "Login or password invalid",
   "Repeat :": "Repeat :",
   "Email :": "Email :",
   "Invalid email type.": "Invalid email type",
@@ -21,7 +21,7 @@
   "Email required.": "Email required.",
   "Provide a real email, it could be useful if you lose your account.": "Provide a real email, it could be useful if you lose your account.",
 
-  "Passwords required.": "Passwords required.",
+  "Password required.": "Password required.",
   "Passwords don't match.": "Passwords don't match.",
   "At least 3 characters required.": "At least 3 characters required.",
   "One capital letter, number required and no specials caracters allowed.": "One capital letter, number required and no specials caracters allowed."
