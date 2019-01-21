@@ -67,9 +67,9 @@ export class IndexPage {
   public getTop(){
     this.ftmProvider.getTopGames().then(data => {
       this.topGamesProvider = data;
-
+      
       if(this.topGamesProvider.status == "success"){
-        this.topGames = this.topGamesProvider.topGames;
+        this.topGames = this.topGamesProvider.games;
         this.gamesStatus = true;
       }
       else if(this.topGamesProvider.status == "error"){
@@ -84,9 +84,6 @@ export class IndexPage {
   public getLast(){
     this.ftmProvider.getLastGames().then(data => {
       this.lastGamesProvider = data;
-      console.log(data);
-
-      console.log(data.games.length);
 
       if(this.lastGamesProvider.status == "success"){
         this.lastGames = this.lastGamesProvider.games;

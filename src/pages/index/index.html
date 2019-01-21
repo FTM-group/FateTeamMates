@@ -1,40 +1,19 @@
 <ion-content padding id="indexGames">
     <ion-spinner name="bubbles" *ngIf="loading"></ion-spinner>
-    <div>
-        <!-- *ngIf="topGames"-->
-        <div>
-            <h3>Top Ten of Games</h3>
-            <!---->
-            <div class="topGames" *ngFor="let topgame of topGames">
-                <div class="topGame">
-                    <h6>{{ topgame.name_game }}</h6>
-                    <p>{{ topgame.genre_game }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div *ngIf="lastGames">
-            <h3>Last Games</h3>
-            <div class="lastGames" *ngFor="let lastgame of lastGames">
-                <div class="lastGame">
-                    <h6>{{ lastgame.name_game }}</h6>
-                    <img src="lastgame.id_thumbnail" alt="">
-                    <p>{{ lastgame.genre_game }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div *ngIf="headlineGames">
-            <h3>Headline Games</h3>
-            <div class="headlineGames" *ngFor="let headlinegame of headlineGames">
-                <div class="headlineGame">
-                    <h6>{{ headlinegame.name_game }}</h6>
-                    <p>{{ headlinegame.genre_game }}</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    <div class="container">
+        <ion-card *ngIf="topGames">
+            <ion-card-header>
+                <h3>Top Ten of Games</h3>
+            </ion-card-header>
+            <ion-card-content class="topGames" *ngFor="let topgame of topGames">
+                <!--<div class="topGame">-->
+                    <ion-card-title>{{ topgame.name_game }}</ion-card-title>
+                    <div *ngFor="let genre of topgame.genres">
+                        <ion-card-subtitle>{{ genre.name_genre }}</ion-card-subtitle>
+                    <!--</div>
+                </div>-->
+            </ion-card-content>
+        </ion-card>
 
     <ion-grid *ngIf="gamesStatus">
         <ion-row>
