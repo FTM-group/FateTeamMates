@@ -1,35 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 /**
- * Generated class for the HomePage page.
+ * Generated class for the HomeComponent component.
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
  */
-
-@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'home',
+  templateUrl: 'home.html'
 })
-export class HomePage implements OnInit{
+export class HomeComponent {
 
+  text: string;
   apiUrl = "http://findteammates/";
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public http: HttpClient
-              ) {
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
-
-  ngOnInit(){
-
+  constructor(public http: HttpClient) {
+    console.log('Hello HomeComponent Component');
+    this.text = 'Hello World';
   }
 
   getTopGames(){

@@ -1,5 +1,40 @@
 <ion-content padding id="indexGames">
     <ion-spinner name="bubbles" *ngIf="loading"></ion-spinner>
+    <div>
+        <!-- *ngIf="topGames"-->
+        <div>
+            <h3>Top Ten of Games</h3>
+            <!---->
+            <div class="topGames" *ngFor="let topgame of topGames">
+                <div class="topGame">
+                    <h6>{{ topgame.name_game }}</h6>
+                    <p>{{ topgame.genre_game }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="lastGames">
+            <h3>Last Games</h3>
+            <div class="lastGames" *ngFor="let lastgame of lastGames">
+                <div class="lastGame">
+                    <h6>{{ lastgame.name_game }}</h6>
+                    <img src="lastgame.id_thumbnail" alt="">
+                    <p>{{ lastgame.genre_game }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="headlineGames">
+            <h3>Headline Games</h3>
+            <div class="headlineGames" *ngFor="let headlinegame of headlineGames">
+                <div class="headlineGame">
+                    <h6>{{ headlinegame.name_game }}</h6>
+                    <p>{{ headlinegame.genre_game }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <ion-grid *ngIf="gamesStatus">
         <ion-row>
@@ -8,27 +43,19 @@
                     <ion-card-content>
                         <img src="assets/thumbnails/{{game.thumbnail_game}}" alt="{{game.name_game}}" (click)="selectGame(game.id_game)">
                         <div *ngIf="selected === game.id_game" class="divSelectGame">
-                            <ion-row class="selectGame">
-                                <ion-col col-3>
-
-                                </ion-col>
-                                <ion-col col-6>
-
-                                </ion-col>
-                                <ion-col col-3 (click)="selectGame(0)">
-
-                                </ion-col>
-                            </ion-row>
+                            <div>
+                                {{text}}
+                            </div>
                         </div>
                     </ion-card-content>
                 </ion-card>
             </ion-col>
         </ion-row>
-        
+
     </ion-grid>
     <div *ngIf="gamesStatus === false && loading === false">
         <p>{{ "An error occured while loading !" | translate }}</p>
         <button ion-button (click)="loadingIndex()" full>{{ "Reload" | translate }}</button>
     </div>
-    
+
 </ion-content>

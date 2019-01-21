@@ -70,6 +70,7 @@ export class FtmProvider {
     
   }
 
+  //inutilisé
   getGames(){
     let data = new Promise(resolve => {
       this.http.get(this.apiUrl+"games.php?all").subscribe(data => {
@@ -81,6 +82,43 @@ export class FtmProvider {
     })
     return data;
   }
+
+  getTopGames(){
+    let data = new Promise(resolve => {
+      this.http.get(this.apiUrl+"games.php?top").subscribe(data => {
+        resolve(data);
+        console.log(data);
+      }, err => {
+        console.log(err);
+        return err;
+      });
+    })
+    console.log(data);
+    return data;
+  }
+
+  getLastGames(){
+    let data = new Promise(resolve => {
+      this.http.get(this.apiUrl+"games.php?last").subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        return err;
+      });
+    })
+    return data;
+  }
+  getHeadlineGames(){
+    let data = new Promise(resolve => {
+      this.http.get(this.apiUrl+"games.php?headline").subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        return err;
+      });
+    })
+    return data;
+   }
 
   switchLanguage(language:string){
     this.translate.use(language);
