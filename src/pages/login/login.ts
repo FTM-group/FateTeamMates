@@ -87,11 +87,19 @@ export class LoginPage {
         }
         else if(this.logData.status == "success"){
           if(this.storage.ready()){
-            let user = {'login':this.logData.user.login, 'email':this.logData.user.email};
+            let user = {'login': login, 'email':this.logData.user.email};
             this.storage.set('user', user);
-            this.events.publish('connected', true);
+            
+
           }
-          this.navCtrl.push(IndexPage);
+          /**
+           * Comportement de la page à changer avec l'event publish
+           */
+          location.reload();
+          //this.events.publish('connected', true);
+          this.connected = true;
+          //this.navCtrl.push(IndexPage);
+
         }
         this.spinner = false;
         

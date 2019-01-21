@@ -41,8 +41,10 @@ export class MyApp {
 
     this.storage.get('user').then((val) => {
       if(val != null){
+        this.events.publish('connected', this.connected, true);
+        //this.events.publish('connected', true)
+        this.connected = true;
         this.nav.push(IndexPage);
-        this.events.publish('connected', true)
       }
       else{
         this.nav.push(LoginPage);
@@ -65,9 +67,9 @@ export class MyApp {
   public logout(){
     if(this.storage.ready()){
       this.storage.remove('user');
+      //this.events.publish('connected', false);
       this.connected = false;
       this.nav.push(LoginPage);
-      this.events.publish('connected', false);
     }   
   }
 
