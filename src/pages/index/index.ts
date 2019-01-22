@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FtmProvider } from '../../providers/ftm/ftm';
 
 import { TranslateService } from '@ngx-translate/core';
+import { PersonalSpaceProvider } from '../../providers/personalSpace/personalSpace';
+import { ConnectedProvider } from '../../providers/connected/connected';
 
 @IonicPage()
 @Component({
@@ -16,16 +18,19 @@ export class IndexPage {
   public loading;
   public selected;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public translate: TranslateService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public translate: TranslateService, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
     this.loadingIndex();
+    this.personalSpace.checkPagePersonalSpace(true);
+    this.connected.checkPageConnected(true);
+
   }
 
   public loadingIndex(){
     this.loading = true;
-    this.getAllGames();
+    //this.getAllGames();
   }
 
-  public getAllGames(){
+  /*public getAllGames(){
     this.ftmProvider.getGames().then(data => {
       this.gamesProvider = data;
 
@@ -40,7 +45,7 @@ export class IndexPage {
       
       this.loading = false;
     });
-  }
+  }*/
 
   public selectGame(id){
     this.selected = id;

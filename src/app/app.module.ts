@@ -21,6 +21,9 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Network } from '@ionic-native/network';
+import { PersonalSpacePage } from '../pages/personal-space/personal-space';
+import { PersonalSpaceProvider } from '../providers/personalSpace/personalSpace';
+import { ConnectedProvider } from '../providers/connected/connected';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,6 +37,7 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterPage,
     IndexPage,
     PasswordPage,
+    PersonalSpacePage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ export function createTranslateLoader(http: HttpClient) {
     LoginPage,
     RegisterPage,
     IndexPage,
-    PasswordPage
+    PasswordPage,
+    PersonalSpacePage
   ],
   providers: [
     StatusBar,
@@ -68,7 +73,9 @@ export function createTranslateLoader(http: HttpClient) {
     FtmProvider,
     CheckerProvider,
     EmailComposer,
-    Network
+    Network,
+    PersonalSpaceProvider,
+    ConnectedProvider
   ]
 })
 export class AppModule {}

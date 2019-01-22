@@ -12,6 +12,10 @@ import { IndexPage } from '../pages/index/index';
 import { Events } from 'ionic-angular';
 
 import { Network } from '@ionic-native/network';
+import { PersonalSpaceProvider } from '../providers/personalSpace/personalSpace';
+import { PersonalSpacePage } from '../pages/personal-space/personal-space';
+import { ConnectedProvider } from '../providers/connected/connected';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -21,11 +25,12 @@ import { Network } from '@ionic-native/network';
 export class MyApp {
 
   lang: string;
-  connected: boolean = false;
+  //connected: boolean = false;
   @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public storage:Storage, public translate: TranslateService, public events: Events, public network: Network) {
-
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public storage:Storage, public translate: TranslateService, public events: Events, public network: Network, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
+    
+    
     this.storage.get('lang').then((val) => {
       if(val != null){
         this.translate.use(val);
@@ -40,10 +45,8 @@ export class MyApp {
 
 
     this.storage.get('user').then((val) => {
-      if(val != null){
-        this.events.publish('connected', this.connected, true);
-        //this.events.publish('connected', true)
-        this.connected = true;
+      if(val != null){   
+        this.connected.checkPageConnected(true);
         this.nav.push(IndexPage);
       }
       else{
@@ -64,11 +67,14 @@ export class MyApp {
     }    
   }
 
+  public goToPersonalSpace(){
+    this.nav.push(PersonalSpacePage);
+  }
+
   public logout(){
     if(this.storage.ready()){
       this.storage.remove('user');
-      //this.events.publish('connected', false);
-      this.connected = false;
+      this.connected.checkPageConnected(true);
       this.nav.push(LoginPage);
     }   
   }

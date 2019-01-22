@@ -9,6 +9,8 @@ import { PasswordPage } from '../password/password';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Events } from 'ionic-angular';
+import { PersonalSpaceProvider } from '../../providers/personalSpace/personalSpace';
+import { ConnectedProvider } from '../../providers/connected/connected';
 
 @Component({
   selector: 'page-login',
@@ -19,8 +21,6 @@ export class LoginPage {
   public passwordPage;
 
   //public ignore = false;
-
-  public connected;
 
   public log = {
     login: '',
@@ -41,9 +41,10 @@ export class LoginPage {
 
   public spinner = false;
 
-  constructor(public navCtrl: NavController, public ftm:FtmProvider, public storage:Storage, public translate: TranslateService, public events: Events, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public ftm:FtmProvider, public storage:Storage, public translate: TranslateService, public events: Events, public navParams: NavParams, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
     // si login existant sur le device
-
+    this.personalSpace.checkPagePersonalSpace(false);
+    this.connected.checkPageConnected(false);
     this.registerPage = RegisterPage;
     this.passwordPage = PasswordPage; 
     
@@ -92,13 +93,8 @@ export class LoginPage {
             
 
           }
-          /**
-           * Comportement de la page à changer avec l'event publish
-           */
-          location.reload();
-          //this.events.publish('connected', true);
-          this.connected = true;
-          //this.navCtrl.push(IndexPage);
+          this.connected.checkPageConnected(true);
+          this.navCtrl.push(IndexPage);
 
         }
         this.spinner = false;
