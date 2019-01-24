@@ -12,14 +12,13 @@ page-index{
         background-color: red;
     }
     /*.topGames{
-
-        padding: 5px;
+        width: 30%;
     }
     .lastGames{
-        padding: 5px;
+        width: 30%;
     }
     .headlineGames{
-        padding: 5px;
+        width: 30%;
     }*/
     h3{
         text-align: center;
@@ -34,8 +33,15 @@ page-index{
         background-color: blue;
     }
     .img{
-        background-color: gray;
+        background-color: rgb(138, 81, 81);
+    }
+    ion-slide{
+        min-width: 33.2%;
     }
 
+    /*@media screen and (max-width: 450px) {
+        ion-slide{
+            min-width: 33%;
+        }
+    }*/
 }
-

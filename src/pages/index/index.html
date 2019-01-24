@@ -1,10 +1,10 @@
 <ion-content padding id="indexGames">
     <ion-spinner name="bubbles" *ngIf="loading"></ion-spinner>
-    <div class="lastGames" class="container">
+    <div class="topGames" class="container">
         <div *ngIf="topGames">
             <h3>Top Ten of Games</h3>
             <ion-slides>
-                <ion-slide *ngFor="let topgame of topGames">
+                <ion-slide [class]="className" *ngFor="let topgame of topGames">
                     <ion-card class="topGame">
                         <ion-card-header>
                             <ion-card-title>{{ topgame.name_game }}</ion-card-title>
@@ -23,7 +23,7 @@
         <div class="lastGames" *ngIf="lastGames">
             <h3>Last Games</h3>
             <ion-slides>
-                <ion-slide *ngFor="let lastgame of lastGames">
+                <ion-slide [class]="className" *ngFor="let lastgame of lastGames">
                     <ion-card class="lastGame">
                         <ion-card-header>
                             <ion-card-title>{{ lastgame.name_game }}</ion-card-title>
@@ -42,7 +42,7 @@
         <div class="headlineGames" *ngIf="headlineGames">
             <h3>Headline Games</h3>
             <ion-slides>
-                <ion-slide *ngFor="let headlinegame of headlineGames">
+                <ion-slide [class]="className" *ngFor="let headlinegame of headlineGames">
                     <ion-card class="headlineGame">
                         <ion-card-header>
                             <ion-card-title>{{ headlinegame.name_game }}</ion-card-title>
