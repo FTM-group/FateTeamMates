@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class FtmProvider {
   
-  apiUrl = "http://findteammates/";
+  apiUrl = "http://findteammates/FTM/";
   public errServer="ok";
 
   constructor(public http: HttpClient, public translate: TranslateService) {
