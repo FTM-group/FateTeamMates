@@ -25,8 +25,6 @@ export class IndexPage {
   public headlineGamesProvider;
   
   public apiUrl = "http://findteammates/";
-  
-  className = 'col-md-12 row';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
