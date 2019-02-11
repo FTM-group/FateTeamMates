@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 import { TranslateService } from '@ngx-translate/core';
-import { PersonalSpaceProvider } from '../personalSpace/personalSpace';
+import { AppFtmProvider } from '../app-ftm/app-ftm';
 
 
 @Injectable()
@@ -13,7 +13,7 @@ export class FtmProvider {
   public errServer="ok";
 
   public user;
-  constructor(public http: HttpClient, public translate: TranslateService, public storage: Storage, public personnalSpace: PersonalSpaceProvider) {
+  constructor(public http: HttpClient, public translate: TranslateService, public storage: Storage, public appFtm: AppFtmProvider) {
     
   }
 
@@ -87,7 +87,7 @@ export class FtmProvider {
 
   getLastGamesWithNicknames(){
     let data = new Promise(resolve => {
-      this.http.get(this.apiUrl+"games.php?last_games="+this.personnalSpace.userId).subscribe(data => {
+      this.http.get(this.apiUrl+"games.php?last_games="+this.appFtm.userId).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -99,7 +99,7 @@ export class FtmProvider {
 
   getGamesWithNicknames(){
     let data = new Promise(resolve => {
-      this.http.get(this.apiUrl+"games.php?games="+this.personnalSpace.userId).subscribe(data => {
+      this.http.get(this.apiUrl+"games.php?games="+this.appFtm.userId).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

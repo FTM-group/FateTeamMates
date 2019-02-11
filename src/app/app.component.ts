@@ -12,9 +12,8 @@ import { LoginPage } from '../pages/login/login';
 import { Events } from 'ionic-angular';
 
 import { Network } from '@ionic-native/network';
-import { PersonalSpaceProvider } from '../providers/personalSpace/personalSpace';
+import { AppFtmProvider } from '../providers/app-ftm/app-ftm';
 import { PersonalSpacePage } from '../pages/personal-space/personal-space';
-import { ConnectedProvider } from '../providers/connected/connected';
 
 
 @Component({
@@ -28,7 +27,7 @@ export class MyApp {
   //connected: boolean = false;
   @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public storage:Storage, public translate: TranslateService, public events: Events, public network: Network, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public storage:Storage, public translate: TranslateService, public events: Events, public network: Network, public appFtm: AppFtmProvider) {
     
     
     this.storage.get('lang').then((val) => {
@@ -75,7 +74,7 @@ export class MyApp {
   public logout(){
     if(this.storage.ready()){
       this.storage.remove('user');
-      this.connected.checkPageConnected(false);
+      this.appFtm.checkPageConnected(false);
       this.nav.push(LoginPage);
     }   
   }

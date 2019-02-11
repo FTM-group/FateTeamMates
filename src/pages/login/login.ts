@@ -9,8 +9,7 @@ import { PasswordPage } from '../password/password';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Events } from 'ionic-angular';
-import { PersonalSpaceProvider } from '../../providers/personalSpace/personalSpace';
-import { ConnectedProvider } from '../../providers/connected/connected';
+import { AppFtmProvider } from '../../providers/app-ftm/app-ftm';
 
 @Component({
   selector: 'page-login',
@@ -41,14 +40,14 @@ export class LoginPage {
 
   public spinner = false;
 
-  constructor(public navCtrl: NavController, public ftm:FtmProvider, public storage:Storage, public translate: TranslateService, public events: Events, public navParams: NavParams, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
+  constructor(public navCtrl: NavController, public ftm:FtmProvider, public storage:Storage, public translate: TranslateService, public events: Events, public navParams: NavParams, public appFtm: AppFtmProvider) {
     this.storage.get('user').then((val) => {
       if(val != null){   
         this.ftm.getCheckLog(val.email).then((data) => {
           this.logData = data;
           this.checkConnectionServer = "end";
           if(this.logData.status == "success"){
-            this.personalSpace.setUserId(this.logData.data);
+            this.appFtm.setUserId(this.logData.data);
             this.navCtrl.push(IndexPage);
           }
         });
@@ -56,8 +55,8 @@ export class LoginPage {
     });
 
     // si login existant sur le device
-    this.personalSpace.checkPagePersonalSpace(false);
-    this.connected.checkPageConnected(false);
+    this.appFtm.checkPagePersonalSpace(false);
+    this.appFtm.checkPageConnected(false);
     this.registerPage = RegisterPage;
     this.passwordPage = PasswordPage; 
     
@@ -108,8 +107,8 @@ export class LoginPage {
             
 
           }
-          this.personalSpace.setUserId(this.logData.id_user);
-          this.connected.checkPageConnected(true);
+          this.appFtm.setUserId(this.logData.id_user);
+          this.appFtm.checkPageConnected(true);
           this.navCtrl.push(IndexPage);
 
         }

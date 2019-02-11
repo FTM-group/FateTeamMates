@@ -22,8 +22,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Network } from '@ionic-native/network';
 import { PersonalSpacePage } from '../pages/personal-space/personal-space';
-import { PersonalSpaceProvider } from '../providers/personalSpace/personalSpace';
-import { ConnectedProvider } from '../providers/connected/connected';
+import { AppFtmProvider } from '../providers/app-ftm/app-ftm';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -74,8 +73,7 @@ export function createTranslateLoader(http: HttpClient) {
     CheckerProvider,
     EmailComposer,
     Network,
-    PersonalSpaceProvider,
-    ConnectedProvider
+    AppFtmProvider
   ]
 })
 export class AppModule {}

@@ -12,7 +12,7 @@
 </ion-header>
 <ion-menu [content]="options" type="overlay">
     <ion-content>
-        <p>{{connected.connected}}</p>
+        <p>{{appFtm.connected}}</p>
         <ion-list> <!-- fermer menu à faire après sélection !!!!!! -->
             <p ion-item text-center style="background-color: lightgrey">
                 {{ "Language" | translate }}
@@ -24,7 +24,7 @@
                 Français
             </button>
         </ion-list>
-        <ion-list *ngIf="connected.connected">
+        <ion-list *ngIf="appFtm.connected">
             <button ion-item text-center style="background-color: lightgrey" (click)="logout()">{{ "Logout" | translate }}</button>
         </ion-list>
     </ion-content>
@@ -35,10 +35,10 @@
 <ion-footer no-border text-center> 
     <ion-toolbar> 
      <ion-buttons center>
-       <button *ngIf="personalSpace.personal_space" ion-button icon-only clear large (click)="goToPersonalSpace()" style="width : 50px ; height : 100%">
+       <button *ngIf="appFtm.personal_space" ion-button icon-only clear large (click)="goToPersonalSpace()" style="width : 50px ; height : 100%">
        <img src="../assets/icon/personnal_space.svg" name="personalSpace" >
        </button>
-           <img *ngIf="personalSpace.personal_space === false" src="../assets/icon/personnal_space.svg" name="personalSpace" style="width : 50px ; height : 100%" >
+           <img *ngIf="appFtm.personal_space === false" src="../assets/icon/personnal_space.svg" name="personalSpace" style="width : 50px ; height : 100%" >
      </ion-buttons>
     </ion-toolbar> 
 </ion-footer> 

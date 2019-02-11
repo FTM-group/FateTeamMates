@@ -5,8 +5,7 @@ import { FtmProvider } from '../../providers/ftm/ftm';
 import { CheckerProvider } from '../../providers/checker/checker';
 
 import { TranslateService } from '@ngx-translate/core';
-import { PersonalSpaceProvider } from '../../providers/personalSpace/personalSpace';
-import { ConnectedProvider } from '../../providers/connected/connected';
+import { AppFtmProvider } from '../../providers/app-ftm/app-ftm';
 
 @IonicPage()
 @Component({
@@ -34,10 +33,10 @@ export class RegisterPage {
   public errRegister;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public checker:CheckerProvider, public translate: TranslateService, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public checker:CheckerProvider, public translate: TranslateService, public appFtm: AppFtmProvider) {
     this.loginPage = LoginPage;
-    this.personalSpace.checkPagePersonalSpace(false);
-    this.connected.checkPageConnected(false);
+    this.appFtm.checkPagePersonalSpace(false);
+    this.appFtm.checkPageConnected(false);
 
   }
 

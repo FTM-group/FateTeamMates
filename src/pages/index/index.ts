@@ -3,8 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FtmProvider } from '../../providers/ftm/ftm';
 
 import { TranslateService } from '@ngx-translate/core';
-import { PersonalSpaceProvider } from '../../providers/personalSpace/personalSpace';
-import { ConnectedProvider } from '../../providers/connected/connected';
+import { AppFtmProvider } from '../../providers/app-ftm/app-ftm';
 
 @IonicPage()
 @Component({
@@ -18,10 +17,10 @@ export class IndexPage {
   public loading;
   public selected;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public translate: TranslateService, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public translate: TranslateService, public appFtm: AppFtmProvider) {
     this.loadingIndex();
-    this.personalSpace.checkPagePersonalSpace(true);
-    this.connected.checkPageConnected(true);
+    this.appFtm.checkPagePersonalSpace(true);
+    this.appFtm.checkPageConnected(true);
 
   }
 

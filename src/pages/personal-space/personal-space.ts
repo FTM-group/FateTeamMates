@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PersonalSpaceProvider } from '../../providers/personalSpace/personalSpace';
-import { ConnectedProvider } from '../../providers/connected/connected';
+import { AppFtmProvider } from '../../providers/app-ftm/app-ftm';
 import { FtmProvider } from '../../providers/ftm/ftm';
 
 /**
@@ -31,10 +30,10 @@ export class PersonalSpacePage {
   public user;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public appFtm: AppFtmProvider) {
     this.loadingIndex();
-    this.personalSpace.checkPagePersonalSpace(false);
-    this.connected.checkPageConnected(true);
+    this.appFtm.checkPagePersonalSpace(false);
+    this.appFtm.checkPageConnected(true);
   }
 
   public loadingIndex(){
@@ -54,7 +53,7 @@ export class PersonalSpacePage {
       console.log(data)
 
       if(this.lastGamesProvider.status == "success"){
-        this.lastGames = this.lastGamesProvider.games;
+        this.lastGames = this.lastGamesProvider.data;
         this.gamesStatus = true;
       }
       else if(this.lastGamesProvider.status == "error"){
@@ -72,7 +71,7 @@ export class PersonalSpacePage {
       console.log(data)
 
       if(this.gamesWithNicknamesProvider.status == "success"){
-        this.gamesWithNicknames = this.gamesWithNicknamesProvider.games;
+        this.gamesWithNicknames = this.gamesWithNicknamesProvider.data;
         this.gamesStatus = true;
       }
       else if(this.gamesWithNicknamesProvider.status == "error"){
