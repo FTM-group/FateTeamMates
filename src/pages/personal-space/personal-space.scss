@@ -1,3 +1,37 @@
 page-personal-space {
 
+    .selectGame ion-col{
+        margin-top: -25%;
+    }
+    .selectGame ion-col:first-child{
+        background-color: blue;
+    }
+    .selectGame ion-col:nth-child(2){
+        background-color: green;
+    }
+    .selectGame ion-col:nth-child(3){
+        background-color: red;
+    }
+    h3{
+        text-align: center;
+    }
+    .lastGame{
+        background-color: red;
+    }
+    .gameWithNicknames{
+        background-color: green;
+    }
+    .img{
+        background-color: rgb(138, 81, 81);
+    }
+    ion-slide{
+        min-width: 33.2%;
+    }
+
+    /*@media screen and (max-width: 450px) {
+        ion-slide{
+            min-width: 33%;
+        }
+    }*/
+
 }

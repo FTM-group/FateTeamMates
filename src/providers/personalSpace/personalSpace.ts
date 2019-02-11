@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 export class PersonalSpaceProvider {
 
   public personal_space: boolean = false;
+  public userId: number = 0;
   constructor(public http: HttpClient) {
 
     }
@@ -21,7 +22,10 @@ export class PersonalSpaceProvider {
     }else{
       this.personal_space = false;
     }
-    console.log("It's not the personal page : " + this.personal_space);
+  }
+
+  public setUserId(userId: number){
+    this.userId = userId;
   }
 
 }

@@ -42,6 +42,19 @@ export class LoginPage {
   public spinner = false;
 
   constructor(public navCtrl: NavController, public ftm:FtmProvider, public storage:Storage, public translate: TranslateService, public events: Events, public navParams: NavParams, public personalSpace: PersonalSpaceProvider, public connected: ConnectedProvider) {
+    this.storage.get('user').then((val) => {
+      if(val != null){   
+        this.ftm.getCheckLog(val.email).then((data) => {
+          this.logData = data;
+          this.checkConnectionServer = "end";
+          if(this.logData.status == "success"){
+            this.personalSpace.setUserId(this.logData.data);
+            this.navCtrl.push(IndexPage);
+          }
+        });
+      }
+    });
+
     // si login existant sur le device
     this.personalSpace.checkPagePersonalSpace(false);
     this.connected.checkPageConnected(false);
@@ -78,11 +91,13 @@ export class LoginPage {
   }
 
   public loginAction(login: string, password: string){
+
     this.spinner = true;
       this.checkConnectionServer = "start";
       this.ftm.getLog(login, password).then((data) => {
         this.logData = data;
         this.checkConnectionServer = "end";
+        console.log(data)
         if(this.logData.status == "error"){
           this.errInvalid = true;
         }
@@ -93,6 +108,7 @@ export class LoginPage {
             
 
           }
+          this.personalSpace.setUserId(this.logData.id_user);
           this.connected.checkPageConnected(true);
           this.navCtrl.push(IndexPage);
 

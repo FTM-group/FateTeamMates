@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 
 import { LoginPage } from '../pages/login/login';
-import { IndexPage } from '../pages/index/index';
+//import { IndexPage } from '../pages/index/index';
 
 import { Events } from 'ionic-angular';
 
@@ -40,23 +40,24 @@ export class MyApp {
         translate.setDefaultLang('en');
         this.lang = "en";
       }
-      
+      this.nav.push(LoginPage);
     });
 
+    
 
-    this.storage.get('user').then((val) => {
+    /*this.storage.get('user').then((val) => {
       if(val != null){   
         this.connected.checkPageConnected(true);
-        this.nav.push(IndexPage);
+        //this.nav.push(IndexPage);
       }
       else{
         this.nav.push(LoginPage);
       }
-    });
+    });*/
 
-    this.network.onConnect().subscribe(data=> console.log(data), error => console.log(error));
+    //this.network.onConnect().subscribe(data=> console.log(data), error => console.log(error));
   
-    this.network.onDisconnect().subscribe(data=> console.log(data), error => console.log(error));
+    //this.network.onDisconnect().subscribe(data=> console.log(data), error => console.log(error));
   }
 
   public switchLanguage(language:string){
@@ -74,7 +75,7 @@ export class MyApp {
   public logout(){
     if(this.storage.ready()){
       this.storage.remove('user');
-      this.connected.checkPageConnected(true);
+      this.connected.checkPageConnected(false);
       this.nav.push(LoginPage);
     }   
   }

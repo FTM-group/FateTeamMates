@@ -12,7 +12,66 @@
 </ion-header>
 -->
 
+<ion-content padding id="personnalSpaceGame">
+    <ion-spinner name="bubbles" *ngIf="loading"></ion-spinner>
+    
+    <h2>Personal Space</h2>    
+        
+        <div class="lastGames" *ngIf="lastGames">
+            <h3>Last Games</h3>
+            <ion-slides [slidesPerView]="3" [loop]="true" [autoplay]="5000">
+                <ion-slide *ngFor="let lastgame of lastGames">
+                    <ion-card class="lastGame">
+                        <ion-card-header>
+                            <ion-card-title>{{ lastgame.name_game }}</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content *ngFor="let genre of lastgame.genres">
+                            <img src="lastgame.id_thumbnail" alt="image of game">
+                            <div>
+                                {{ genre.name_genre }}
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
+        </div>
 
-<ion-content padding>
-    <h1>Personal Space</h1> 
-</ion-content>
+        <div class="gamesWithNicknames" *ngIf="gamesWithNicknames">
+            <h3>Your Games</h3>
+            <ion-slides [slidesPerView]="3" [loop]="true" [autoplay]="5000">
+                <ion-slide *ngFor="let gameWithNicknames of gamesWithNicknames">
+                    <ion-card class="gameWithNicknames">
+                        <ion-card-header>
+                            <ion-card-title>{{ gameWithNicknames.name_game }}</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content *ngFor="let genre of gameWithNicknames.genres">
+                            <img src="gameWithNicknames.id_thumbnail" alt="image of game">
+                            <div>
+                                {{ genre.name_genre }}
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
+        </div>
+<p>COUCOU</p>
+        <ion-grid *ngIf="gamesStatus">
+                <ion-row>
+                    <ion-col *ngFor="let game of games" col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2>
+                        <ion-card>
+                            <ion-card-content>
+                                <img src="assets/thumbnails/{{game.thumbnail_game}}" alt="{{game.name_game}}" (click)="selectGame(game.id_game)">
+                                <div *ngIf="selected === game.id_game" class="divSelectGame">
+                                    <div>
+                                        {{text}}
+                                    </div>
+                                </div>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+        </ion-grid>
+        <div *ngIf="gamesStatus === false && loading === false">
+            <p>{{ "An error occured while loading !" | translate }}</p>
+            <button ion-button (click)="loadingIndex()" full>{{ "Reload" | translate }}</button>
+        </div>
