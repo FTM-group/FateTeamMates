@@ -53,7 +53,7 @@ export class PersonalSpacePage {
       console.log(data)
 
       if(this.lastGamesProvider.status == "success"){
-        this.lastGames = this.lastGamesProvider.data;
+        this.lastGames = this.lastGamesProvider.games;
         this.gamesStatus = true;
       }
       else if(this.lastGamesProvider.status == "error"){
@@ -71,7 +71,7 @@ export class PersonalSpacePage {
       console.log(data)
 
       if(this.gamesWithNicknamesProvider.status == "success"){
-        this.gamesWithNicknames = this.gamesWithNicknamesProvider.data;
+        this.gamesWithNicknames = this.gamesWithNicknamesProvider.games;
         this.gamesStatus = true;
       }
       else if(this.gamesWithNicknamesProvider.status == "error"){
