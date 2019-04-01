@@ -24,5 +24,8 @@
   "Password required.": "Password required.",
   "Passwords don't match.": "Passwords don't match.",
   "At least 3 characters required.": "At least 3 characters required.",
-  "One capital letter, number required and no specials caracters allowed.": "One capital letter, number required and no specials caracters allowed."
+  "One capital letter, number required and no specials caracters allowed.": "One capital letter, number required and no specials caracters allowed.",
+  "Personal Space": "Personal Space",
+  "Last Games": "Last Games",
+  "Your Games": "Your Games"
 }

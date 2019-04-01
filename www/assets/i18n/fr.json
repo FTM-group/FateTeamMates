@@ -24,5 +24,8 @@
   "Password required.": "Mot de passe requis.",
   "Passwords don't match.": "Les mots de passe ne correspondent pas.",
   "At least 3 characters required.": "Au moins 3 caractères requis.",
-  "One capital letter, number required and no specials caracters allowed.": "Une lettre majuscule, un numéro requis et aucun caractère spécial autorisé."
+  "One capital letter, number required and no specials caracters allowed.": "Une lettre majuscule, un numéro requis et aucun caractère spécial autorisé.",
+  "Personal Space": "Espace Personnel",
+  "Last Games": "Derniers Jeux",
+  "Your Games": "Bibliothèque de jeux"
 }
