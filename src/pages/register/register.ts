@@ -1,3 +1,4 @@
+import { LongMatchmakingProvider } from './../../providers/long-matchmaking/long-matchmaking';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
@@ -32,8 +33,15 @@ export class RegisterPage {
   public errRegister;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public ftmProvider:FtmProvider, public checker:CheckerProvider, public translate: TranslateService) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public ftmProvider:FtmProvider, 
+    public checker:CheckerProvider, 
+    public translate: TranslateService,
+    public longMatch: LongMatchmakingProvider) {
     this.loginPage = LoginPage;
+    this.longMatch.checkLongMatchMaking(false);
+    this.longMatch.checkPageConnected(false);
   }
 
   public registerForm() {

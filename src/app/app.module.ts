@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { IndexPage } from '../pages/index';
 import { PasswordPage } from '../pages/password/password';
+import { LongMatchmakingPage } from './../pages/long-matchmaking/long-matchmaking';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -21,6 +22,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Network } from '@ionic-native/network';
+import { LongMatchmakingProvider } from '../providers/long-matchmaking/long-matchmaking';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,6 +36,7 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterPage,
     IndexPage,
     PasswordPage,
+    LongMatchmakingPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ export function createTranslateLoader(http: HttpClient) {
     LoginPage,
     RegisterPage,
     IndexPage,
-    PasswordPage
+    PasswordPage,
+    LongMatchmakingPage
   ],
   providers: [
     StatusBar,
@@ -68,7 +72,8 @@ export function createTranslateLoader(http: HttpClient) {
     FtmProvider,
     CheckerProvider,
     EmailComposer,
-    Network
+    Network,
+    LongMatchmakingProvider
   ]
 })
 export class AppModule {}

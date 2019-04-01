@@ -1,17 +1,20 @@
+import { LongMatchmakingPage } from './../../pages/long-matchmaking/long-matchmaking';
+import { LongMatchmakingProvider } from './../long-matchmaking/long-matchmaking';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
 
-
 @Injectable()
 export class FtmProvider {
   
-  apiUrl = "http://findteammates/";
+  apiUrl = "http://findteammates/FTM/";
   public errServer="ok";
 
-  constructor(public http: HttpClient, public translate: TranslateService) {
-  
+  constructor(public http: HttpClient, 
+    public translate: TranslateService,
+    public longMatch: LongMatchmakingProvider) {
+      
   }
 
 
@@ -55,7 +58,6 @@ export class FtmProvider {
 
 
   getLog(login:string, password:string){
-
     let data = new Promise(resolve => {
       this.http.post(this.apiUrl+"login.php", {'login':login, 'password':password}, {
         headers: { 'Content-Type': 'application/json' }
@@ -67,7 +69,6 @@ export class FtmProvider {
       });
     })
     return data;
-    
   }
 
   //inutilisé
@@ -124,5 +125,32 @@ export class FtmProvider {
     this.translate.use(language);
   }
 
+  createMatchMaking(){
+    let data = new Promise(resolve => {
+      this.http.post(this.apiUrl+"matchmaking.php", {
+        headers: { 'Content-Type': 'application/json' }
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        return err;
+      });
+    })
+    return data;
+  }
+
+  searchPlayers(){
+    let data = new Promise(resolve => {
+      this.http.get(this.apiUrl+"matchmaking.php?name_game").subscribe(data => {
+        resolve(data);
+        console.log(data);
+      }, err => {
+        console.log(err);
+        return err;
+      });
+    })
+    console.log(data);
+    return data;
+  }
   
 }

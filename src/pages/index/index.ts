@@ -1,9 +1,11 @@
+import { LongMatchmakingProvider } from './../../providers/long-matchmaking/long-matchmaking';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FtmProvider } from '../../providers/ftm/ftm';
 
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
+
 
 @IonicPage()
 @Component({
@@ -30,8 +32,11 @@ export class IndexPage {
               public navParams: NavParams,
               public ftmProvider:FtmProvider,
               public translate: TranslateService,
-              public http: HttpClient) {
+              public http: HttpClient,
+              public longMatch: LongMatchmakingProvider) {
     this.loadingIndex();
+    this.longMatch.checkLongMatchMaking(true);
+    this.longMatch.checkPageConnected(true);
   }
 
   public loadingIndex(){

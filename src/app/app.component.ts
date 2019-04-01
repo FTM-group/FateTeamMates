@@ -1,3 +1,4 @@
+import { LongMatchmakingProvider } from './../providers/long-matchmaking/long-matchmaking';
 import { Component, ViewChild  } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -8,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { LoginPage } from '../pages/login/login';
 import { IndexPage } from '../pages/index/index';
+import { LongMatchmakingPage } from './../pages/long-matchmaking/long-matchmaking';
 
 import { Events } from 'ionic-angular';
 
@@ -24,7 +26,14 @@ export class MyApp {
   connected: boolean = false;
   @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public storage:Storage, public translate: TranslateService, public events: Events, public network: Network) {
+  constructor(platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen, 
+    public storage:Storage, 
+    public translate: TranslateService, 
+    public events: Events, 
+    public network: Network, 
+    public longMatch: LongMatchmakingProvider) {
 
     this.storage.get('lang').then((val) => {
       if(val != null){
@@ -49,6 +58,10 @@ export class MyApp {
       }
     });
 
+    this.storage.get('user').then((val) => {
+        this.nav.push(LongMatchmakingPage);
+    });
+
     this.network.onConnect().subscribe(data=> console.log(data), error => console.log(error));
   
     this.network.onDisconnect().subscribe(data=> console.log(data), error => console.log(error));
@@ -69,6 +82,13 @@ export class MyApp {
       this.nav.push(LoginPage);
       this.events.publish('connected', false);
     }   
+  }
+
+  public checkLong(){
+    if(this.storage.ready()){
+      this.longMatch.checkLongMatchMaking(true);
+      this.nav.push(LongMatchmakingPage);
+    }
   }
 
   ionViewDidEnter(){
