@@ -19,21 +19,42 @@
         
         <div class="lastGames" *ngIf="lastGames">
             <h3>Last Games</h3>
-            <ion-slides [slidesPerView]="3" [loop]="true" [autoplay]="5000">
-                <ion-slide *ngFor="let lastgame of lastGames">
-                    <ion-card class="lastGame">
-                        <ion-card-header>
-                            <ion-card-title>{{ lastgame.name_game }}</ion-card-title>
-                        </ion-card-header>
-                        <ion-card-content *ngFor="let genre of lastgame.genres">
-                            <img src="lastgame.id_thumbnail" alt="image of game">
-                            <div>
-                                {{ genre.name_genre }}
-                            </div>
-                        </ion-card-content>
-                    </ion-card>
-                </ion-slide>
-            </ion-slides>
+                <div *ngIf="lastGames < 3 ">
+                    <ion-slides [slidesPerView]="3" [autoplay]="5000">
+                        <ion-slide *ngFor="let lastgame of lastGames">
+                               <ion-card class="lastGame">
+                                    <ion-card-header>
+                                        <ion-card-title>{{ lastgame.name_game }}</ion-card-title>
+                                    </ion-card-header>
+                                    <ion-card-content *ngFor="let genre of lastgame.genres">
+                                        <img src="lastgame.id_thumbnail" alt="image of game">
+                                        <div>
+                                            {{ genre.name_genre }}
+                                        </div>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-slide>
+                        </ion-slides>
+                </div>
+                <div *ngIf="lastGames >= 3 ">
+                    <ion-slides [slidesPerView]="3" [loop]="true" [autoplay]="5000">
+                        <ion-slide *ngFor="let lastgame of lastGames">
+                            <ion-card class="lastGame">
+                                <ion-card-header>
+                                    <ion-card-title>{{ lastgame.name_game }}</ion-card-title>
+                                </ion-card-header>
+                                <ion-card-content *ngFor="let genre of lastgame.genres">
+                                    <img src="lastgame.id_thumbnail" alt="image of game">
+                                    <div>
+                                        {{ genre.name_genre }}
+                                    </div>
+                                </ion-card-content>
+                            </ion-card>
+                        </ion-slide>
+                    </ion-slides>
+                </div>
+
+                
         </div>
 
         <div class="gamesWithNicknames" *ngIf="gamesWithNicknames">
