@@ -141,15 +141,13 @@ export class FtmProvider {
 
   searchPlayers(){
     let data = new Promise(resolve => {
-      this.http.get(this.apiUrl+"matchmaking.php?name_game").subscribe(data => {
+      this.http.get(this.apiUrl+"search_players.php?name_game").subscribe(data => {
         resolve(data);
-        console.log(data);
       }, err => {
         console.log(err);
         return err;
       });
     })
-    console.log(data);
     return data;
   }
   

@@ -6,15 +6,18 @@
 -->
 
 <ion-header>
-    <!--<div class="text-center" *ngIf="spinner === false">
-        <a [navPush]="IndexPage">Accueil</a>
-    </div>-->
-    <h1>LongMatchmaking trouvé</h1>
-    <img src="https://screenrant.com/wp-content/uploads/Hugh-Jackman-X-Men-Wolverine.jpg">
-    <div *ngIf="topGames">
-      <!--{{this.topGames[12].name_game}}-->
-      <ion-title [title]="Tekken">Tekken</ion-title>
-    </div>
+  <!--<div class="text-center" *ngIf="spinner === false">
+      <a [navPush]="IndexPage">Accueil</a>
+  </div>-->
+  <h1>LongMatchmaking trouvé</h1>
+  <div class="game">
+    <img  src="https://store.playstation.com/store/api/chihiro/00_09_000/container/FR/fr/99/EP0700-CUSA06014_00-TEKKEN7DLXED0001//image?
+    _version=00_09_000&platform=chihiro&w=720&h=720&bg_color=000000&opacity=100">
+  </div>
+  <div>
+    <!--{{this.topGames[12].name_game}}-->
+    <ion-title [title]="Tekken">Tekken</ion-title>
+  </div>
 </ion-header>
 <ion-content padding>
   <table>
@@ -26,10 +29,9 @@
       </tr>
     </thead>
     <tbody>
-      <!--*ngFor="let user of this.getPlayers()"-->
-      <tr >
-        <td></td>
-        <td></td>
+      <tr *ngFor="let user of nicknames">
+        <td>{{ user.ready }}</td>
+        <td>{{ user.nickname }}</td>
         <td></td>
       </tr>
     </tbody>

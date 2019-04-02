@@ -21,14 +21,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LongMatchmakingPage {
   public topGamesProvider;
+  public searchPlayersProvider;
   public gamesStatus = null;
   public topGames;
   public loading;
   public selected;
+  public nicknames;
 
   @Input() title: string;
 
-  public users = {
+  /*public users = {
     1: {
       'username': 'JohnTheLegend',
       'games': [
@@ -54,7 +56,7 @@ export class LongMatchmakingPage {
             'Forza7', 'Tekken', 'Call of Duty : Black Ops'
         ]    
     }
-  };
+  };*/
 
 
   constructor(public navCtrl: NavController,
@@ -84,7 +86,24 @@ export class LongMatchmakingPage {
     });
   }
 
-  getPlayers(){
+  public getPlayers(){
+    this.ftmProvider.searchPlayers().then(data => {
+      this.searchPlayersProvider = data;
+      
+      if(this.searchPlayersProvider.status == "success"){
+        this.nicknames = this.searchPlayersProvider.nickname;
+        this.gamesStatus = true;
+      }
+      else if(this.topGamesProvider.status == "error"){
+        this.nicknames = null;
+        this.gamesStatus = false;
+      }
+      
+      this.loading = false;
+    });
+  }
+
+  /*getPlayers(){
     for(let i = 0; i < Object.keys( this.users[i] ).length; i++){
       for(let j = 0; j < Object.keys(this.users[i]['games'][j]).length; j++){
         if(this.users['games'] == this.title){
@@ -93,6 +112,6 @@ export class LongMatchmakingPage {
         }
       }
     }
-  }
+  }*/
 
 }

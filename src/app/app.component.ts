@@ -57,7 +57,7 @@ export class MyApp {
         this.nav.push(LoginPage);
       }
     });
-
+    //enlever
     this.storage.get('user').then((val) => {
         this.nav.push(LongMatchmakingPage);
     });
