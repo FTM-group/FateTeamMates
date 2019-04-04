@@ -20,7 +20,7 @@
   </div>
 </ion-header>
 <ion-content padding>
-  <table>
+  <!--<table>
     <thead>
       <tr>
         <th>Check</th>
@@ -36,7 +36,25 @@
       </tr>
     </tbody>
   </table>
-
   <button>Valider</button>
-  <button>Refuser</button>
+  <button>Refuser</button>-->
+<form [formGroup]="matchmakingForm" (ngSubmit)="createMatchMaking()">
+  <ion-item>
+    <ion-label class="t_label">Number of players :</ion-label>
+    <ion-input type="number" formControlName="numberPlayers"></ion-input>
+  </ion-item>
+  <ion-list radio-group>
+    <ion-label class="t_label t_type">Type of matchmaking :</ion-label>
+    <ion-item>
+        <ion-label class="type">Short Session</ion-label>
+        <ion-radio value="1"></ion-radio>
+    </ion-item>
+    <ion-item>
+        <ion-label class="type">Long Session</ion-label>
+        <ion-radio value="2"></ion-radio>
+    </ion-item>
+  </ion-list>
+</form>
+
+
 </ion-content>

@@ -5,6 +5,7 @@ import { FtmProvider } from '../../providers/ftm/ftm';
 
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder } from '@angular/forms';
 
 
 /**
@@ -20,58 +21,37 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'long-matchmaking.html',
 })
 export class LongMatchmakingPage {
+  @Input() title: string;
+
   public topGamesProvider;
+  public matchmakingProvider;
   public searchPlayersProvider;
   public gamesStatus = null;
   public topGames;
   public loading;
   public selected;
   public nicknames;
-
-  @Input() title: string;
-
-  /*public users = {
-    1: {
-      'username': 'JohnTheLegend',
-      'games': [
-          'GTA5', 'Mincraft', 'Call of Duty : Black Ops'
-      ]
-    },
-    2: {
-        'username': 'SteveAustin',
-        'games': [
-            'Forza7', 'Tekken', 'GTA5'
-        ]
-    },
-    3: {
-        'username': 'McQueen',
-        'games': [
-            'GTA5', 'Forza7', 'Minecraft'
-        ]
-    },
-    4: 
-    {
-        'username': 'Batman',
-        'games': [
-            'Forza7', 'Tekken', 'Call of Duty : Black Ops'
-        ]    
-    }
-  };*/
-
+  public matchmaking;
+  public matchmakingForm = this.formBuilder.group({
+    numberPlayers: Number,
+    typeMatchmaking: Number,
+    nameGame: [this.title]
+  });
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public ftmProvider:FtmProvider,
+    public ftmProvider: FtmProvider,
     public translate: TranslateService,
     public http: HttpClient,
+    public formBuilder: FormBuilder,
     public longMatch: LongMatchmakingProvider) {
       this.longMatch.checkLongMatchMaking(false);
       this.longMatch.checkPageConnected(true);
   }
 
-  public getTop(){
-    this.ftmProvider.getTopGames().then(data => {
-      this.topGamesProvider = data;
+  public createMatchmaking(this.matchmakingForm.numberPlayers, this.matchmakingForm.typeMatchmaking, this.matchmakingForm.nameGame){
+    this.matchmakingProvider.createMatchmaking(matchmakingForm).then(data => {
+      this.matchmaking = data;
       
       if(this.topGamesProvider.status == "success"){
         this.topGames = this.topGamesProvider.games;
@@ -86,7 +66,7 @@ export class LongMatchmakingPage {
     });
   }
 
-  public getPlayers(){
+  /*public getPlayers(){
     this.ftmProvider.searchPlayers().then(data => {
       this.searchPlayersProvider = data;
       
@@ -101,7 +81,7 @@ export class LongMatchmakingPage {
       
       this.loading = false;
     });
-  }
+  }*/
 
   /*getPlayers(){
     for(let i = 0; i < Object.keys( this.users[i] ).length; i++){
